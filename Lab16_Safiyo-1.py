@@ -54,7 +54,9 @@ class UnemploymentPlotter:
         """Creates the time series line plot and saves it to a PNG file."""
         fig, ax = plt.subplots()
 
-        ax.plot(self.dataset.dates, self.dataset.rates, linewidth=1)
+        points = ax.scatter(self.dataset.dates, self.dataset.rates,
+                             c=self.dataset.rates, cmap="RdYlGn_r", s=8)
+        fig.colorbar(points, ax=ax, label="Unemp Rate")
 
         ax.set_title("Ohio Unemployment (by Month): 1976 - 2022", fontsize=16)
         ax.set_xlabel("Date", fontsize=12)

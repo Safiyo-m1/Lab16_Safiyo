@@ -6,6 +6,7 @@ a time series line plot of the unemployment rate using matplotlib.
 Starter Code: No external starter code was used.
 Date: 08/09/2026
 """
+from ast import main
 import csv
 import matplotlib.pyplot as plt
 from datetime import datetime 
@@ -62,4 +63,13 @@ class UnemploymentPlotter:
         fig.autofmt_xdate()
         fig.savefig(output_filename)
         print(f"Plot saved as {output_filename}") 
- 
+
+
+def main():
+    dataset = UnemploymentDataset("OHUR.csv").load()
+    plotter = UnemploymentPlotter(dataset)
+    plotter.plot("ohio_unemployment.png")
+
+
+if __name__ == "__main__":
+    main() 

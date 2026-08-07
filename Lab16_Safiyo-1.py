@@ -9,3 +9,11 @@ Date: 08/09/2026
 import csv
 import matplotlib.pyplot as plt
 from datetime import datetime 
+
+class UnemploymentDataset:
+    """Holds and loads Ohio unemployment data from a CSV file."""
+
+    def __init__(self, filename):
+        self.filename = filename
+        self.dates = []
+        self.rates = [] 

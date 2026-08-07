@@ -43,4 +43,23 @@ class UnemploymentDataset:
 
         return self 
 
+class UnemploymentPlotter:
+    """Builds and saves a line plot from an UnemploymentDataset."""
+
+    def __init__(self, dataset):
+        self.dataset = dataset
+
+    def plot(self, output_filename="ohio_unemployment.png"):
+        """Creates the time series line plot and saves it to a PNG file."""
+        fig, ax = plt.subplots()
+
+        ax.plot(self.dataset.dates, self.dataset.rates, linewidth=1)
+
+        ax.set_title("Ohio Unemployment (by Month): 1976 - 2022", fontsize=16)
+        ax.set_xlabel("Date", fontsize=12)
+        ax.set_ylabel("Unemp Rate", fontsize=12)
+
+        fig.autofmt_xdate()
+        fig.savefig(output_filename)
+        print(f"Plot saved as {output_filename}") 
  
